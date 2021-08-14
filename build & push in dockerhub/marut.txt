@@ -34,12 +34,14 @@ docker-hub-build:
 	*docker build -t marutzap/user-srv:latest -t marutzap/user-srv:%SHA% -f ./user-srv/Dockerfile.dev ./user-srv
 	*docker build -t marutzap/platform-srv:latest -t  marutzap/platform-srv:%SHA% -f ./platform-srv/Dockerfile.dev ./platform-srv
 	*docker build -t marutzap/file-srv:latest -t marutzap/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
+	docker build -t marutzap/gateway-srv:latest -t marutzap/gateway-srv:%SHA% -f ./gateway-srv/Dockerfile.dev ./gateway-srv
 
 docker-hub-push:
 	*docker push marutzap/auth-srv:%SHA%
 	*docker push marutzap/user-srv:%SHA%
 	*docker push marutzap/platform-srv:%SHA%
 	*docker push marutzap/file-srv:%SHA%
+	*docker push marutzap/gateway-srv:%SHA%
 
 
 

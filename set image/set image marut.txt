@@ -1,16 +1,11 @@
 
 kubectl set image deployments/file-srv file-srv=marutzap/file-srv:a22e7cb87426b7e980ee8c91a7ad81ebcffa4500
 
-
 kubectl set image deployments/platform-srv platform-srv=marutzap/platform-srv:c254e7111ae029366d0822c199edae22d31095d1
 
-
-
-
-
-
-
 kubectl set image deployments/user-srv user-srv=marutzap/user-srv:46ae30aaa2ca59ff17d91a5bd21bea100c672143
+
+kubectl set image deployments/gateway-srv gateway-srv=marutzap/gateway-srv:d6d3e9e47e84003097880d9d24dcce835afedd92
 	
 
 
@@ -18,19 +13,12 @@ kubectl set image deployments/user-srv user-srv=marutzap/user-srv:46ae30aaa2ca59
 
 
 
+
+
+
+PORTAL
+
 kubectl set image deployments/admin-portal admin-portal=marutzap/admin-portal:9b9c5b8880dd5823119475d14e75768da75c9200
-
-
-
-
-
-
-
-
-
-
-
-
 kubectl set image deployments/user-portal user-portal=marutzap/user-portal:492711d7ded4d0ab42frontenduserportaldeploy
 
 

@@ -112,3 +112,19 @@ EMAIL:noreplyagrostack@gmail.com
 PWD:Learn@2021
 sendgris pwwd :noreplytestmail@2021
 
+***************************************************************************marutZap**************************************************************
+//GCP   ACCOUNT   DEAILS
+agrostack.marut@gmail.com
+password: BynMrt@2021
+
+//Docker-Hub
+
+*marutzap
+*agrostack.test@gmail.com
+*Learn@2021
+
+ADMIN
+https://admin.growfacts.in/
+PSW:marutzap@admin
+
+https://growfacts.in/api/gateway/receive/GetFumigationData

@@ -1,0 +1,11 @@
+API : https://growfacts.in/api/gateway/receive/GetFumigationData
+
+REQUEST: 
+
+{
+    "data" : " testing data 1 " 
+}
+
+RESPONSE:
+
+{"updated":"2021-08-14T05:20:47.877791100Z"}
