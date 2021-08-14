@@ -1,0 +1,72 @@
+//FRONTEND
+staging:
+	*npm install
+	*npm run build -- --mode staging
+    *git rev-parse HEAD
+    *set SHA=
+
+docker build -t agrostack/corp-website:latest -t agrostack/corp-website:%SHA% -f ./corp-website/Dockerfile.nobuild ./corp-website
+docker build -t agrostack/admin-portal:latest -t agrostack/admin-portal:%SHA% -f ./admin-portal/Dockerfile.nobuild ./admin-portal
+docker build -t agrostack/central-portal:latest -t agrostack/central-portal:%SHA% -f ./central-portal/Dockerfile.nobuild ./central-portal
+docker build -t agrostack/partner-portal:latest -t agrostack/partner-portal:%SHA% -f ./partner-portal/Dockerfile.nobuild ./partner-portal
+docker build -t agrostack/rsk-portal:latest -t agrostack/rsk-portal:%SHA% -f ./rsk-portal/Dockerfile.nobuild ./rsk-portal
+docker build -t agrostack/central-web:latest -t agrostack/central-web:%SHA% -f ./central-web/Dockerfile.nobuild ./central-web
+docker build -t agrostack/rsk-web:latest -t agrostack/rsk-web:%SHA% -f ./rsk-web/Dockerfile.nobuild ./rsk-web
+
+
+docker push agrostack/corp-website:%SHA%
+docker push agrostack/admin-portal:%SHA%
+docker push agrostack/central-portal:%SHA%
+docker push agrostack/partner-portal:%SHA%
+docker push agrostack/rsk-portal:%SHA%
+docker push agrostack/rsk-web:%SHA%
+
+BACKEND
+
+protoc -I. --go_out=. --micro_out=. proto/platform/platform.proto
+set GOOS=linux 
+set CGO_ENABLED=0 
+set GOARCH=amd64 	
+go build 
+git rev-parse HEAD
+set SHA=
+docker build -t agrostack/auth-srv:latest -t agrostack/auth-srv:%SHA% -f ./auth-srv/Dockerfile.dev ./auth-srv
+docker build -t agrostack/user-srv:latest -t agrostack/user-srv:%SHA% -f ./user-srv/Dockerfile.dev ./user-srv
+docker build -t agrostack/platform-srv:latest -t  agrostack/platform-srv:%SHA% -f ./platform-srv/Dockerfile.dev ./platform-srv
+docker build -t agrostack/trace-srv:latest -t  agrostack/trace-srv:%SHA% -f ./trace-srv/Dockerfile.dev ./trace-srv
+docker build -t agrostack/qr-job:latest -t  agrostack/qr-job:%SHA% -f ./qr-job/Dockerfile.dev ./qr-job
+docker build -t agrostack/file-srv:latest -t agrostack/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
+docker build -t agrostack/gateway-srv:latest -t agrostack/gateway-srv:%SHA% -f ./gateway-srv/Dockerfile.dev ./gateway-srv
+docker build -t agrostack/farmer-srv:latest -t agrostack/farmer-srv:%SHA% -f ./farmer-srv/Dockerfile.dev ./farmer-srv
+
+
+
+docker push agrostack/auth-srv:%SHA%
+docker push agrostack/user-srv:%SHA%
+docker push agrostack/platform-srv:%SHA%
+docker push agrostack/trace-srv:%SHA%
+docker push agrostack/qr-job:%SHA%
+docker push agrostack/file-srv:%SHA%
+docker push agrostack/gateway-srv:%SHA%
+docker push agrostack/farmer-srv-srv:%SHA%
+
+//GCP
+//GKSEEDS
+gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
+//TEST
+gcloud container clusters get-credentials test --zone asia-southeast1-a --project ultimate-figure-312206
+
+
+//SET IMAGE
+//BACKEND
+kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:1128fc5f89076834f21c1ae7ffee7946eda17d65
+kubectl set image deployments/trace-srv trace-srv=agrostack/trace-srv:1128fc5f89076834f21c1ae7ffee79trace
+kubectl set image deployments/user-srv user-srv=agrostack/user-srv:52b35bf90046e4debbd5a17de5fad4d4b13be301
+
+
+
+
+//FRONTEND
+kubectl set image deployments/rsk-portal rsk-portal=agrostack/rsk-portal:6d720817a815f5f4d5a85f9b02727e736ce16fbbrskportal
+kubectl set image deployments/admin-portal admin-portal=agrostack/admin-portal:6d720817a815f5f4d5a85f9b02727e736ce16fbadmin-portal
+kubectl set image deployments/central-portal central-portal=agrostack/central-portal:6d720817a815f5f4d5a85f9b02727e736ce16fbb

@@ -1,0 +1,59 @@
+
+in consignment file
+
+update this : option go_package = "./consignment/consignmentpb";
+
+PROTOBUF
+
+protoc -I. --go_out=plugins=grpc:. consignment.proto
+
+go-micro framework
+
+protoc --proto_path=. --go_out=. --micro_out=. consignment.proto
+
+GO BUILD	
+
+set GOOS=linux
+set CGO_ENABLED=0
+set GOARCH=amd64
+GO BUILD
+
+go build -o shippy-service-consignment shippy/shippy-service-consignment
+go build -o shippy-service-vessel shippy/shippy-service-vessel
+
+go build -o shippy-user-service shippy/shippy-user-service
+
+DOCKER BUILD COMMANDS
+
+docker build -t shippy/shippy-service-consignment:latest  -f ./shippy-service-consignment/Dockerfile ./shippy-service-consignment
+
+docker build -t shippy/shippy-cli-consignment:latest  -f ./shippy-cli-consignment/Dockerfile ./shippy-cli-consignment
+
+docker build -t shippy/shippy-service-vessel:latest  -f ./shippy-service-vessel/Dockerfile ./shippy-service-vessel
+
+docker build -t shippy/shippy-user-service:latest  -f ./shippy-user-service/Dockerfile ./shippy-user-service
+
+DOCKER COMMANDS
+
+docker build -t shippy-service-consignment .
+
+docker run -p 50051:50051 shippy-service-consignment
+
+docker run -p 50051:50051  -e MICRO_SERVER_ADDRESS=:50051 shippy/shippy-service-consignment
+
+docker run -p 50053:50051 -e MICRO_SERVER_ADDRESS=:50051 shippy/shippy-user-service
+
+
+docker run shippy/shippy-cli-consignment
+
+
+TO KILL PORTS
+
+
+netstat -ano | findstr :<PORT>
+
+taskkill /PID <PID> /F
+
+
+
+docker-compose run shippy-user-cli --name="Ewan Valentine" --email="ewan.valentine89@gmail.com" --password="Testing123" --company="Peak.ai"

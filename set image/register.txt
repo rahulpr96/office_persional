@@ -1,0 +1,84 @@
+//Register API
+func (s *User) Register(ctx context.Context, req *user.UserDetails, rsp *user.UserRegisterResponse) error {
+	// Sender data.
+	from := "Kpmanjunath1997@gmail.com"
+	password := "Manjunath@74"
+
+	// Receiver email address.
+	to := []string{
+		req.Email,
+	}
+
+	// smtp server configuration.
+	host := "smtp.gmail.com"
+	port := "587"
+
+	// message
+	subject := "Subject: Email Verification Code\r\n\r\n"
+
+	uid := uuid.NewV4()
+	verCode := uid.String()
+	partnerID := s.Partners[req.Company]
+	fmt.Println("partnerID", partnerID)
+
+	body := "https://central.test.agrostack.io/user/login?u=" + req.Email + "&evpw=" + verCode + partnerID + "\n"
+
+	message := []byte(subject + body)
+
+	// Authentication.
+	auth := smtp.PlainAuth("", from, password, host)
+
+	// Sending email.
+	err := smtp.SendMail(host+":"+port, auth, from, to, message)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+	fmt.Println("Email Sent Successfully!")
+
+	fmt.Println("Register", req)
+	// partnerID := s.Partners[req.Company]
+	fmt.Println("partnerID", partnerID)
+	if partnerID == "" {
+		errMsg := fmt.Sprintf("Error while Registering for company %v, error %v", req.Company, "Company Not Found")
+		log.Logger().Error(errMsg)
+		return errors.Unauthorized("agrostack.srv.User.Login", "Company Not Found")
+	}
+	req.Status = "Inactive"
+	//uid := uuid.NewV4()
+	req.EmpId = uid.String()
+	req.PartnerId = partnerID
+	// Salt and hash the password using the bcrypt algorithm
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
+	if err != nil {
+		//log.Println("Password Genration Failed, emp_id=%v, updated_by=%v, err=%v", req.EmpId, req.UpdatedBy, err.Error())
+		errMsg := fmt.Sprintf("Error in  Password Generation for emp %v, name %v, error %v", req.EmpId, req.Name, err.Error())
+		log.Logger().Error(errMsg)
+		return errors.InternalServerError("agrostack.srv.User.Register", "Password Encryption Failed")
+	}
+	req.Password = string(hashedPassword)
+	fmt.Println("req", req)
+
+	err = employeedb.CreateEmployee(req)
+	if err != nil {
+		//log.Println("Register user Failed, emp_id=%v, updated_by=%v, err=%v", req.EmpId, req.UpdatedBy, err.Error())
+		errMsg := fmt.Sprintf("Error in  Register User for emp_id %v, name %v, error %v", req.EmpId, req.Name, err.Error())
+		log.Logger().Error(errMsg)
+		return errors.InternalServerError("agrostack.srv.User.Register", err.Error())
+	}
+
+	user := &user.UserDetails{}
+
+	user.EmpId = req.EmpId
+	user.Name = req.Name
+	user.PhoneNumber = req.PhoneNumber
+	user.Address = req.Address
+	user.RoleId = req.RoleId
+	user.Company = req.Company
+	user.Email = req.Email
+	user.Status = req.Status
+	rsp.User = user
+
+	fmt.Println(rsp)
+	return nil
+}

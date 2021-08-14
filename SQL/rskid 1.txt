@@ -1,0 +1,8 @@
+select devices.id ,devices.device_id, type, status, updated, rsk_id
+from devices 
+join rsk_devices on rsk_devices.id=devices.id 
+where rsk_id='0c69b812-fa07-49f2-bec6-738361fce5c5';
+
+
+
+

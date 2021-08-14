@@ -1,0 +1,33 @@
+//SET IMAGE
+//BACKEND
+kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:njdhfkjadbfkjhadnlvjdanj54444555
+kubectl set image deployments/trace-srv trace-srv=agrostack/trace-srv:c9cc7809112346b3ba864b1be0c8e8a2fe91b823111789789
+kubectl set image deployments/user-srv user-srv=agrostack/user-srv:26f09618f270c889620e4fb91057788811410e59kkkkpp
+
+
+
+
+kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:ed887af4f5303a3acf5007rahul4444555ddd
+kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:ed887af4f5303a3acf5007rahul4444555dddd5kpkp4444llll44
+
+
+//FRONTEND
+kubectl set image deployments/rsk-portal rsk-portal=agrostack/rsk-portal:36e668b81ac8239e707ba7c55f61616262659d8c  
+kubectl set image deployments/admin-portal admin-portal=agrostack/admin-portal:6d720817a815f5f4d5a85f9b02727e736ce16fbadmin-portal
+kubectl set image deployments/central-portal central-portal=agrostack/central-portal:36e668b81ac8239e707ba7c55f61616262659d8c987978
+kubectl set image deployments/rsk-web rsk-web=agrostack/rsk-web:b4411d2463bc9b7d0d1607d3195f89567482e6f6
+kubectl set image deployments/central-web central-web=agrostack/central-web:mnjjnjnvsjnviushsbdsihvudsgbs555
+
+
+
+
+
+
+
+///old code backend 
+User-srv : 26f09618f270c889620e4fb91057788811410e591
+platform-srv: b4411d2463bc9b7d0d1607d3195f89567482e6f61243
+
+///old code frontend
+central-portal : 26f09618f270c889620e4fb91057788811410e5central-portal
+rsk-portal : 26f09618f270c889620e4fb9105778881141rsk-portal

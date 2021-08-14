@@ -1,0 +1,25 @@
+
+***************************************************************************platform-srv*********************************************************************************
+kubectl set image deployments/platform-srv platform-srv=agroseeds/platform-srv:0f235cdc5c0c371247c86ea5bea19dcc8de7a6cdjh
+kubectl set image deployments/platform-srv platform-srv=agroseeds/platform-srv:7b7307e67eda4d446a56dc71497f20ee7aaa9f02
+kubectl set image deployments/platform-srv platform-srv=agroseeds/platform-srv:db57785c03779fb397984dfbbd853d330122bKJJ03
+kubectl set image deployments/platform-srv platform-srv=agroseeds/platform-srv:c4241c95363e562da51b7bf74ddb43dc3896a04
+kubectl set image deployments/platform-srv platform-srv=agroseeds/platform-srv:9f3d81049b59fc4fa655f5f1b007d0a793abda146
+***************************************************************************trace-srv*********************************************************************************
+
+
+
+kubectl set image deployments/admin-portal admin-portal=agroseeds/admin-portal:ae45c2765bf8c16766d777bc4admin-portal
+
+kubectl set image deployments/partner-portal partner-portal=agroseeds/partner-portal:ae45c2765bf8c16766d777bc42partner-portal
+
+kubectl set image deployments/trace-portal trace-portal=agroseeds/trace-portal:
+
+kubectl set image deployments/qr-portal qr-portal=agroseeds/qr-portal:ac3985a36fd74371f7b7688306eacffb105f467b
+
+
+
+http://34.87.61.1
+
+
+

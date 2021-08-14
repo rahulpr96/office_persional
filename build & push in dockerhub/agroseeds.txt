@@ -1,0 +1,59 @@
+//FRONTEND
+staging:
+	*npm install
+	*npm run build -- --mode staging
+
+	docker build -t agroseeds/admin-portal:latest -t agroseeds/admin-portal:%SHA% -f./admin-portal/Dockerfile.nobuild ./admin-portal
+	docker build -t agroseeds/trace-portal:latest -t agroseeds/trace-portal:%SHA% -f ./trace-portal/Dockerfile.nobuild ./trace-portal
+	docker build -t agroseeds/prod-portal:latest -t agroseeds/prod-portal:%SHA% -f ./prod-portal/Dockerfile.nobuild ./prod-portal
+	docker build -t agroseeds/partner-portal:latest -t agroseeds/partner-portal:%SHA% -f ./partner-portal/Dockerfile.nobuild ./partner-portal
+	docker build -t agroseeds/qr-portal:latest -t agroseeds/qr-portal:%SHA% -f ./qr-portal/Dockerfile.nobuild ./qr-portal
+
+	docker push agroseeds/admin-portal:%SHA%
+	docker push agroseeds/trace-portal:%SHA%
+	docker push agroseeds/prod-portal:%SHA%
+	docker push agroseeds/partner-portal:%SHA%
+	docker push agroseeds/qr-portal:%SHA%
+
+BACKEND
+
+protoc -I. --go_out=. --micro_out=. proto/platform/platform.proto
+set GOOS=linux 
+set CGO_ENABLED=0 
+set GOARCH=amd64 	
+go build 
+git rev-parse HEAD
+set SHA=
+
+
+docker build -t agroseeds/auth-srv:latest -t agroseeds/auth-srv:%SHA% -f ./auth-srv/Dockerfile.dev ./auth-srv
+docker build -t agroseeds/user-srv:latest -t agroseeds/user-srv:%SHA% -f ./user-srv/Dockerfile.dev ./user-srv
+docker build -t agroseeds/platform-srv:latest -t  agroseeds/platform-srv:%SHA% -f ./platform-srv/Dockerfile.dev ./platform-srv
+docker build -t agroseeds/trace-srv:latest -t  agroseeds/trace-srv:%SHA% -f ./trace-srv/Dockerfile.dev ./trace-srv
+docker build -t agroseeds/qr-job:latest -t  agroseeds/qr-job:%SHA% -f ./qr-job/Dockerfile.dev ./qr-job
+docker build -t agroseeds/file-srv:latest -t agroseeds/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
+docker build -t agroseeds/gateway-srv:latest -t agroseeds/gateway-srv:%SHA% -f ./gateway-srv/Dockerfile.dev ./gateway-srv
+
+
+
+docker push agroseeds/auth-srv:%SHA%
+docker push agroseeds/user-srv:%SHA%
+docker push agroseeds/platform-srv:%SHA%
+docker push agroseeds/trace-srv:%SHA%
+docker push agroseeds/qr-job:%SHA%
+docker push agroseeds/file-srv:%SHA%
+docker push agroseeds/gateway-srv:%SHA%
+
+
+//GCP
+//GKSEEDS
+gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
+//TEST
+gcloud container clusters get-credentials test --zone asia-southeast1-a --project ultimate-figure-312206
+
+
+//SET IMAGE
+kubectl set image deployments/platform-srv platform-srv=marutzap/platform-srv:knosjhkvdkvsdoivv55555
+
+
+

@@ -1,0 +1,16 @@
+// to open sql in gcp
+
+*kubectl exec --stdin --tty shell-demo -- /bin/bash
+
+//login
+*mysql -u roor -p
+*password:agrostack@marut
+
+//To show database
+*show databasess;
+
+//To show tables
+*show tables;
+
+//select table
+select * from table_name;

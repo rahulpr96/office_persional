@@ -1,0 +1,28 @@
+1. How do you intend to use Twilio SendGrid Services? Please elaborate on the nature of your business, the services /products you provide, and your potential customer base? 
+-->to send mails for users to activate their accounts 
+Is your SendGrid use case for you or your clients?
+-->yes
+
+If your accounts email domain differs from your website domain, please provide an email address from your business domain where we can send you a verification email
+-->agrostacknoreply@gmail.com
+
+2. How are you obtaining your end users contact information for initial outreach? 
+Through clients, marketing strategies, lead services, etc.
+-->through clients
+
+
+3. How will you allow your recipients to opt out of your emails (whether you plan to use SendGrid’s one-click unsubscribe feature, or if you have your own method)? Please include the following that is required as part of Twilio SendGrid's policy:
+links to the website/URL for this process 
+
+we have our method to provide links to users 
+
+screenshots or a scan/copy of the opt-out process
+
+-->Email Verification Code https://rsk.test.agrostack.io/user/login?u=manjusampangi74@gmail.com&evpw=60cc4a96-5ac7-4c44-bd64-ef916762b980&part=9ef4477b-c563-4670-8d01-bd2879933e1e&rsk=bb070a67-3503-43c6-bdfb-d27466bf9b46 
+
+
+4. Please provide a screenshot of the exact messages you intend to send message recipients.
+
+
+4. Please provide us a publicly available link showing your affiliation with your organization. This may be a website/social media link or other public information.
+

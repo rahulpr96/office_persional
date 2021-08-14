@@ -1,0 +1,47 @@
+//FRONTEND
+staging:
+	*npm install
+	*npm run build -- --mode staging
+
+docker-hub-build:
+
+	*git rev-parse HEAD
+	*set SHA=
+
+
+	*docker build -t marutzap/admin-portal:latest -t marutzap/admin-portal:%SHA% -f ./admin-portal/Dockerfile.nobuild ./admin-portal
+	*docker build -t marutzap/user-portal:latest -t marutzap/user-portal:%SHA% -f ./user-portal/Dockerfile.nobuild ./user-portal
+
+docker-hub-push:
+
+	*docker push marutzap/admin-portal:%SHA%
+	*docker push marutzap/user-portal:%SHA%
+
+//BACKEND
+build:
+	*protoc -I. --go_out=. --micro_out=. proto/platform/platform.proto
+	*protoc -I. --go_out=. --micro_out=. proto/user/user.proto
+	protoc -I. --go_out=. --micro_out=. proto/auth/auth.proto
+	*set GOOS=linux 
+	*set CGO_ENABLED=0 
+	*set GOARCH=amd64 
+	*go build 	
+docker-hub-build:
+
+	*git rev-parse HEAD
+	*set SHA=
+	*docker build -t marutzap/auth-srv:latest -t marutzap/auth-srv:%SHA% -f ./auth-srv/Dockerfile.dev ./auth-srv
+	*docker build -t marutzap/user-srv:latest -t marutzap/user-srv:%SHA% -f ./user-srv/Dockerfile.dev ./user-srv
+	*docker build -t marutzap/platform-srv:latest -t  marutzap/platform-srv:%SHA% -f ./platform-srv/Dockerfile.dev ./platform-srv
+	*docker build -t marutzap/file-srv:latest -t marutzap/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
+
+docker-hub-push:
+	*docker push marutzap/auth-srv:%SHA%
+	*docker push marutzap/user-srv:%SHA%
+	*docker push marutzap/platform-srv:%SHA%
+	*docker push marutzap/file-srv:%SHA%
+
+
+
+
+

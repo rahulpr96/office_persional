@@ -1,0 +1,27 @@
+git init.
+git clone
+
+
+
+git branch manju	
+git branch
+git status
+
+git checkout manju
+
+git add .
+
+git commit -m "intial commit"
+ 
+git push
+
+git pull
+
+git merge orgin/master
+
+
+
+
+//gcp
+
+git stash
