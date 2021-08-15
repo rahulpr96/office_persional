@@ -57,3 +57,4 @@ kubectl set image deployments/platform-srv platform-srv=marutzap/platform-srv:kn
 
 
 
+35.240.183.189

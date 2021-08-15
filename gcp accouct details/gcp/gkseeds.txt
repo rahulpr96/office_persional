@@ -1,135 +1,135 @@
-step 1 : 
-  Create a New project 
-       -- Give Name To Project 
-       -- Select The Given Project
-    
-step 2: 
-  Search For kubernetes Engine
-      -- Make It Enable
-      -- Click On Manage
+	step 1 : 
+	  Create a New project 
+		   -- Give Name To Project 
+		   -- Select The Given Project
+		
+	step 2: 
+	  Search For kubernetes Engine
+		  -- Make It Enable
+		  -- Click On Manage
 
-step 3 :
-  Go to kubernetes Engine
-      -- Click On Create Cluster
-      -- Click On Standard -> configure
+	step 3 :
+	  Go to kubernetes Engine
+		  -- Click On Create Cluster
+		  -- Click On Standard -> configure
 
-      1. Eneter Cluster Name (agristudio)
-      2. Select Zone (asia-southeast1-a)
-      3. Click On default-pool -> Security in Left Menu
-                                  * select Allow Full Access to All Cloud APIs 
-      4. Click On Add Node Pool 
-      5. Click On pool-1
-                * Set Number Of Node To One
-                * Click on Security
-                      * select Allow Full Access to All Cloud APIs 
-      6. Click On Create
+		  1. Eneter Cluster Name (agristudio)
+		  2. Select Zone (asia-southeast1-a)
+		  3. Click On default-pool -> Security in Left Menu
+									  * select Allow Full Access to All Cloud APIs 
+		  4. Click On Add Node Pool 
+		  5. Click On pool-1
+					* Set Number Of Node To One
+					* Click on Security
+						  * select Allow Full Access to All Cloud APIs 
+		  6. Click On Create
 
-step 4:
-     Search Cloud storage
+	step 4:
+		 Search Cloud storage
 
-     1. Make It Enable
-     2. Click On Create Bucket
-     3. Enter Name (agristudio)
-     4. Click On Create
+		 1. Make It Enable
+		 2. Click On Create Bucket
+		 3. Enter Name (agristudio)
+		 4. Click On Create
 
-step 5: 
-    Select IAM & Admin From Menu
+	step 5: 
+		Select IAM & Admin From Menu
 
-    1. Click On Compute Engine default service account Edit Button
-    2. Click On Add Another role
-    3. Select ServiceAccountTokenCreator
-    4. Click On Save
-    5. Copy Compute Engine Name 
-  
-step 6: 
-     Open Cloud Shell
+		1. Click On Compute Engine default service account Edit Button
+		2. Click On Add Another role
+		3. Select ServiceAccountTokenCreator
+		4. Click On Save
+		5. Copy Compute Engine Name 
+	  
+	step 6: 
+		 Open Cloud Shell
 
-     Run steps
+		 Run steps
 
-     1. gcloud auth login
-          * click the link and get verification code           
+		 1. gcloud auth login
+			  * click the link and get verification code           
 
-     2. gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
- 
-     3. kubectl create secret docker-registry dockerregistrykey --docker-username=agroseeds --docker-password=BlrHyd2021 --docker-email=agrostack.bynark@gmail.com
+		 2. gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
+	 
+		 3. kubectl create secret docker-registry dockerregistrykey --docker-username=agroseeds --docker-password=BlrHyd2021 --docker-email=agrostack.bynark@gmail.com
 
-     4. kubectl create secret generic saemail --from-literal SAEMAIL=335194658863-compute@developer.gserviceaccount.com
-       
-     5. kubectl create secret generic storagebucket --from-literal STORAGEBUCKET=gk-seeds
+		 4. kubectl create secret generic saemail --from-literal SAEMAIL=335194658863-compute@developer.gserviceaccount.com
+		   
+		 5. kubectl create secret generic storagebucket --from-literal STORAGEBUCKET=gk-seeds
 
-     6. kubectl create secret generic adminusername --from-literal ADMINUSERNAME=admin
+		 6. kubectl create secret generic adminusername --from-literal ADMINUSERNAME=admin
 
-     7. kubectl create secret generic adminpassword --from-literal ADMINPASSWORD=admin@gkseeds
+		 7. kubectl create secret generic adminpassword --from-literal ADMINPASSWORD=admin@gkseeds
 
-     8. kubectl create secret generic mysqlpassword --from-literal MYSQLPASSWORD=gkseeds@agroseeds
+		 8. kubectl create secret generic mysqlpassword --from-literal MYSQLPASSWORD=gkseeds@agroseeds
 
-     9. kubectl create secret generic accesssecret --from-literal ACCESSSECRET=gkseeds
+		 9. kubectl create secret generic accesssecret --from-literal ACCESSSECRET=gkseeds
 
-    10. kubectl create secret generic refreshsecret --from-literal REFRESHSECRET=gkseeds
+		10. kubectl create secret generic refreshsecret --from-literal REFRESHSECRET=gkseeds
 
-    11. curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+		11. curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
 
-    12. chmod 700 get_helm.sh
+		12. chmod 700 get_helm.sh
 
-    13. ./get_helm.sh
+		13. ./get_helm.sh
 
-    14. https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke  //FOLLOW STEPS FROM THIS URL//
-     
-    15. kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
-`       
-        * Create the namespace for cert-manager
+		14. https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke  //FOLLOW STEPS FROM THIS URL//
+		 
+		15. kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
+	`       
+			* Create the namespace for cert-manager
 
-        * kubectl create namespace cert-manager
+			* kubectl create namespace cert-manager
 
-        * Add the Jetstack Helm repository
+			* Add the Jetstack Helm repository
 
-        * helm repo add jetstack https://charts.jetstack.io
+			* helm repo add jetstack https://charts.jetstack.io
 
-        * Update your local Helm chart repository cache
+			* Update your local Helm chart repository cache
 
-        * helm repo update
+			* helm repo update
 
-        *  Install the cert-manager Helm chart:
-        
-        * helm install cert-manager --namespace cert-manager --version v0.11.0 jetstack/cert-manager
+			*  Install the cert-manager Helm chart:
+			
+			* helm install cert-manager --namespace cert-manager --version v0.11.0 jetstack/cert-manager
 
-    16. git clone (agriresearch repository .checkout feature branch)
+		16. git clone (agriresearch repository .checkout feature branch)
 
-    17. cd k8s/staging-k8s 
+		17. cd k8s/staging-k8s 
 
-    18. kubectl apply -f .
+		18. kubectl apply -f .
 
-    19. Apply Infra K8s Files
+		19. Apply Infra K8s Files
 
-    20. Apply Frontend and Backend file from k8s
+		20. Apply Frontend and Backend file from k8s
 
-    21. Go To kubernetes Engine -> Services & Ingress -> Ingress Nginix controller -> Copy External IP
+		21. Go To kubernetes Engine -> Services & Ingress -> Ingress Nginix controller -> Copy External IP
 
-step 7:
+	step 7:
 
-   Search cloud DNS
+	   Search cloud DNS
 
-     1. Enable API 
-     2. Create zone
-     3. Enter Zone Name  (dns-agrostack-io)
-     4. Enter DNS Name (agrostack.io)
-     5. Click on Create
-     6. Click On Add Record Set
-     7. Enter DNS Name (empty)
-     8. Select Resource Record Type To A 
-     9. Enter Copied External Ip Address
-    10. Click On Create
-    11. Click On Add Record Set
-    12. Enter DNS Name (admin)
-    13. Select Resource Record Type To CNAME
-    14. Enter Canonical Name To agrostack.io
-    15. Repeate Step 11 To 14 With DNS Name (trace, user, partner, www)
+		 1. Enable API 
+		 2. Create zone
+		 3. Enter Zone Name  (dns-agrostack-io)
+		 4. Enter DNS Name (agrostack.io)
+		 5. Click on Create
+		 6. Click On Add Record Set
+		 7. Enter DNS Name (empty)
+		 8. Select Resource Record Type To A 
+		 9. Enter Copied External Ip Address
+		10. Click On Create
+		11. Click On Add Record Set
+		12. Enter DNS Name (admin)
+		13. Select Resource Record Type To CNAME
+		14. Enter Canonical Name To agrostack.io
+		15. Repeate Step 11 To 14 With DNS Name (trace, user, partner, www)
 
-Elastic 
-=========
-kubectl apply -f https://download.elastic.co/downloads/eck/1.4.1/all-in-one.yaml
+	Elastic 
+	=========
+	kubectl apply -f https://download.elastic.co/downloads/eck/1.4.1/all-in-one.yaml
 
-https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html
-   
-https://github.com/elastic/helm-charts/blob/master/logstash/README.md
+	https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html
+	   
+	https://github.com/elastic/helm-charts/blob/master/logstash/README.md
 

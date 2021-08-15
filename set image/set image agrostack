@@ -1,6 +1,6 @@
 //SET IMAGE
 //BACKEND
-kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:njdhfkjadbfkjhadnlvjdanj54444555
+kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:smfkjlsnjbfkanfankjlfhalnfbfkdj
 kubectl set image deployments/trace-srv trace-srv=agrostack/trace-srv:c9cc7809112346b3ba864b1be0c8e8a2fe91b823111789789
 kubectl set image deployments/user-srv user-srv=agrostack/user-srv:26f09618f270c889620e4fb91057788811410e59kkkkpp
 
