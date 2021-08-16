@@ -19,6 +19,7 @@ kubectl set image deployments/admin-portal admin-portal=agroseeds/admin-portal:l
 
 kubectl set image deployments/partner-portal partner-portal=agroseeds/partner-portal:mkjhojdsnvksjvnijvskjnvksjkkkk
 
+
 kubectl set image deployments/trace-portal trace-portal=agroseeds/trace-portal:
 
 kubectl set image deployments/qr-portal qr-portal=agroseeds/qr-portal:ac3985a36fd74371f7b7688306eacffb105f467b
