@@ -1,0 +1,10 @@
+from := mail.NewEmail("Agrostack", "agrostacknoreply@gmail.com")
+	to := mail.NewEmail("", req.Email)
+	subject := "Email Verification Code : \r\n\r\n"
+
+	fmt.Println("partnerID", partnerID)
+
+	body := "https://rsk.test.agrostack.io/user/login?url=" + req.Email + "&evpw=" + req.EmpId + "&part=" + req.PartnerId + "\n"
+	message := mail.NewSingleEmail(from, subject, to, subject, subject+body)
+	client := sendgrid.NewSendClient("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")
+	_, err = client.Send(message)

@@ -1,0 +1,25 @@
+
+BACKEND
+
+kubectl set image deployments/auth-srv auth-srv=agricore/auth-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0
+
+kubectl set image deployments/user-srv user-srv=agricore/user-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0111111111116
+
+kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0111111111115
+
+kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0fffssssss
+
+kubectl set image deployments/qr-job qr-job=agricore/qr-job:8e6ace30433e9f93232a5da8beca1851e69bdfc01111555
+
+kubectl set image deployments/file-srv file-srv=agricore/file-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc01111
+
+kubectl set image deployments/farmer-srv farmer-srv=agricore/farmer-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0121212
+
+
+FRONTEND
+
+kubectl set image deployments/admin-web admin-web=agricore/admin-web:8e6ace30433e9f93232a5da8beca1851e69bdfc07777
+
+kubectl set image deployments/partner-web partner-web=agricore/partner-web:8e6ace30433e9f93232a5da8beca1851e69bdfc022
+
+kubectl set image deployments/qr-web qr-web=agricore/qr-web:8e6ace30433e9f93232a5da8beca1851e69bdfc02233

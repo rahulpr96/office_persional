@@ -50,6 +50,8 @@ docker push agroseeds/gateway-srv:%SHA%
 gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
 //TEST
 gcloud container clusters get-credentials test --zone asia-southeast1-a --project ultimate-figure-312206
+//AGROSTACK
+gcloud container clusters get-credentials marutzap --zone asia-southeast1-a --project agrostack-310016
 
 
 //SET IMAGE

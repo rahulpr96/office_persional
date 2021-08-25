@@ -128,3 +128,15 @@ https://admin.growfacts.in/
 PSW:marutzap@admin
 
 https://growfacts.in/api/gateway/receive/GetFumigationData
+
+***************************************************************************AGRICORE**************************************************************
+GMAIL:
+*agricore.bynark@gmail.com
+*Learn@2021
+
+//Docker-Hub
+
+*agricore
+*agricore.bynark@gmail.com
+*Learn@2021
+

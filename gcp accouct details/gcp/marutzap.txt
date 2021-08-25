@@ -29,7 +29,7 @@ step 4:
 
      1. Make It Enable
      2. Click On Create Bucket
-     3. Enter Name (marutzap )
+     3. Enter Name (marut-zap )
      4. Click On Create
 
 step 5: 
@@ -49,15 +49,13 @@ step 6:
      1. gcloud auth login
           * click the link and get verification code           
 
-     2. gcloud container clusters get-credentials marutzap --zone asia-southeast1-a --project  marut-322809
+     2. gcloud container clusters get-credentials marutzap --zone asia-southeast1-a --project  agrostack-310016
  
-     3. kubectl create secret docker-registry dockerregistrykey --docker-username=marutzap \
+     3. kubectl create secret docker-registry dockerregistrykey --docker-username=marutzap --docker-password=Learn@2021 --docker-email=agrostack.test@gmail.com
 
- --docker-password=Learn@2021 --docker-email=agrostack.test@gmail.com
-
-     4. kubectl create secret generic saemail --from-literal SAEMAIL=288286846252-compute@developer.gserviceaccount.com
+     4. kubectl create secret generic saemail --from-literal SAEMAIL=726919958491-compute@developer.gserviceaccount.com
        
-     5. kubectl create secret generic storagebucket --from-literal STORAGEBUCKET=marutzap
+     5. kubectl create secret generic storagebucket --from-literal STORAGEBUCKET=marut-zap
 
      6. kubectl create secret generic adminusername --from-literal ADMINUSERNAME=admin
 
@@ -95,11 +93,7 @@ step 6:
 
         *  Install the cert-manager Helm chart:
         
-        * helm install \
-          cert-manager \
-          --namespace cert-manager \
-          --version v0.11.0 \
-          jetstack/cert-manager
+        * helm install cert-manager --namespace cert-manager --version v0.11.0 jetstack/cert-manager
 
     16. git clone https://github.com/agrisolve/marut.git
 

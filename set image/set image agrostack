@@ -1,14 +1,14 @@
 //SET IMAGE
 //BACKEND
-kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:smfkjlsnjbfkanfankjlfhalnfbfkdj
+kubectl set image deployments/platform-srv platform-srv=agrostack/platform-srv:62851c9e436305a44e7ed780ae518a089258c5634
 kubectl set image deployments/trace-srv trace-srv=agrostack/trace-srv:c9cc7809112346b3ba864b1be0c8e8a2fe91b823111789789
 kubectl set image deployments/user-srv user-srv=agrostack/user-srv:26f09618f270c889620e4fb91057788811410e59kkkkpp
 
 
 
 
-kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:ed887af4f5303a3acf5007rahul4444555ddd
-kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:ed887af4f5303a3acf5007rahul4444555dddd5kpkp4444llll44
+kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:1eca117baac984806fcc0b4a91f7abf77d4142431
+kubectl set image deployments/farmer-srv farmer-srv=agrostack/farmer-srv:1eca117baac984806fcc0b4a91f7abf77d4142431444
 
 
 //FRONTEND
@@ -31,3 +31,8 @@ platform-srv: b4411d2463bc9b7d0d1607d3195f89567482e6f61243
 ///old code frontend
 central-portal : 26f09618f270c889620e4fb91057788811410e5central-portal
 rsk-portal : 26f09618f270c889620e4fb9105778881141rsk-portal
+
+
+new//
+
+kubectl set image deployments/rsk-web rsk-web=agrostack/rsk-web:snldhflksmlkdnlhvsjvnjsdbvkjbdsv

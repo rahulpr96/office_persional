@@ -61,7 +61,7 @@
 
 		 7. kubectl create secret generic adminpassword --from-literal ADMINPASSWORD=admin@gkseeds
 
-		 8. kubectl create secret generic mysqlpassword --from-literal MYSQLPASSWORD=gkseeds@agroseeds
+		 8. kubectl create secret generic mysqlpassword --from-literal MYSQLPASSWORD=test@agroseeds
 
 		 9. kubectl create secret generic accesssecret --from-literal ACCESSSECRET=gkseeds
 

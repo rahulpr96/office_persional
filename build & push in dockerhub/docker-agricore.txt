@@ -1,0 +1,66 @@
+//FRONTEND
+staging:
+	*npm install
+	*npm run build -- --mode staging
+    *git rev-parse HEAD
+    *set SHA=
+	docker build -t agricore/admin-portal:latest -t agricore/admin-portal:%SHA% -f ./admin-portal/Dockerfile.nobuild ./admin-portal
+docker build -t agricore/trace-portal:latest -t agricore/trace-portal:%SHA% -f ./trace-portal/Dockerfile.nobuild ./trace-portal
+docker build -t agricore/prod-portal:latest -t agricore/prod-portal:%SHA% -f ./prod-portal/Dockerfile.nobuild ./prod-portal
+docker build -t agricore/partner-portal:latest -t agricore/partner-portal:%SHA% -f ./partner-portal/Dockerfile.nobuild ./partner-portal
+docker build -t agricore/qr-portal:latest -t agricore/qr-portal:%SHA% -f ./qr-portal/Dockerfile.nobuild ./qr-portal
+
+
+docker push agricore/admin-portal:latest
+docker push agricore/trace-portal:latest
+docker push agricore/prod-portal:latest
+docker push agricore/partner-portal:latest
+docker push agricore/qr-portal:latest
+
+docker push agricore/admin-portal:%SHA%
+docker push agricore/trace-portal:%SHA%
+docker push agricore/prod-portal:%SHA%
+docker push agricore/partner-portal:%SHA%
+docker push agricore/qr-portal:%SHA%
+
+BACKEND
+
+protoc -I. --go_out=. --micro_out=. proto/platform/platform.proto
+set GOOS=linux 
+set CGO_ENABLED=0 
+set GOARCH=amd64 	
+go build 
+git rev-parse HEAD
+set SHA=
+
+docker build -t agricore/auth-srv:latest -t agricore/auth-srv:%SHA% -f ./auth-srv/Dockerfile.dev ./auth-srv
+docker build -t agricore/user-srv:latest -t agricore/user-srv:%SHA% -f ./user-srv/Dockerfile.dev ./user-srv
+docker build -t agricore/platform-srv:latest -t  agricore/platform-srv:%SHA% -f ./platform-srv/Dockerfile.dev ./platform-srv
+docker build -t agricore/trace-srv:latest -t  agricore/trace-srv:%SHA% -f ./trace-srv/Dockerfile.dev ./trace-srv
+docker build -t agricore/qr-job:latest -t  agricore/qr-job:%SHA% -f ./qr-job/Dockerfile.dev ./qr-job
+docker build -t agricore/file-srv:latest -t agricore/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
+docker build -t agricore/farmer-srv:latest -t agricore/farmer-srv:%SHA% -f ./farmer-srv/Dockerfile.dev ./farmer-srv
+
+docker push agricore/auth-srv:latest
+docker push agricore/user-srv:latest
+docker push agricore/platform-srv:latest
+docker push agricore/trace-srv:latest
+docker push agricore/qr-job:latest
+docker push agricore/file-srv:latest
+docker push agricore/gateway-srv:latest
+
+docker push agricore/auth-srv:%SHA%
+docker push agricore/user-srv:%SHA%
+docker push agricore/platform-srv:%SHA%
+docker push agricore/trace-srv:%SHA%
+docker push agricore/qr-job:%SHA%
+docker push agricore/file-srv:%SHA%
+docker push agricore/farmer-srv:%SHA%
+
+//GCP
+//GKSEEDS
+gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
+//TEST
+gcloud container clusters get-credentials test --zone asia-southeast1-a --project ultimate-figure-312206
+//AGROSTACK
+gcloud container clusters get-credentials marutzap --zone asia-southeast1-a --project agrostack-310016
