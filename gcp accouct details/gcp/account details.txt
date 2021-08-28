@@ -1,0 +1,142 @@
+***************************************************************************marut**************************************************************
+//GCP   ACCOUNT   DEAILS
+*agrostack.test@gmail.com
+*Learn@2021
+
+//Docker-Hub
+
+*marutzap
+*agrostack.test@gmail.com
+*Learn@2021
+
+ADMIN
+https://admin.growfacts.in/
+PSW:admin@marut
+
+***************************************************************************agroseeds**************************************************************
+
+//GCP   ACCOUNT   DEAILS
+agrostack.bynark@gmail.com
+BlrHyd2021
+
+//Docker-Hub
+agroseeds
+BlrHyd2021
+
+//SQL
+test@agrostack
+
+BUCKET
+gsutil cors set cors.json gs://agrostack-test/
+history | grep gstuil
+***************************************************************************Gkseeds**************************************************************
+
+//GCP   ACCOUNT   DEAILS
+agrostack.bynark@gmail.com
+BlrHyd2021
+
+//Docker-Hub
+agroseeds
+BlrHyd2021
+
+//SQL
+gkseeds@agroseeds
+
+//ADMIN
+admin.gkseeds.agrostack.io.
+admin:admin
+password:admin@gkseeds
+
+BUCKET
+gsutil cors set cors.json gs://gk-seeds/
+history | grep gstuil
+
+gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
+
+
+***************************************************************************Gkseeds/test**************************************************************
+
+
+//GCP   ACCOUNT   DEAILS
+agrostack.bynark@gmail.com
+BlrHyd2021
+
+//Docker-Hub
+agroseeds
+BlrHyd2021
+
+//SQL
+gkseeds@agroseeds
+
+//ADMIN
+admin.test.agrostack.io.
+admin:admin
+password:admin@test
+
+BUCKET
+gsutil cors set cors.json gs://test-agroseed/
+history | grep gstuil
+***************************************************************************AGROSTACK**************************************************************
+
+
+//GCP   ACCOUNT   DEAILS
+agrostack.bynark@gmail.com
+BlrHyd2021
+
+//Docker-Hub
+agrostack
+BlrHyd2021
+
+//SQL
+test@agroseeds
+
+//ADMIN
+admin.agrostack.io.
+admin:admin
+password:admin@tests
+
+BUCKET
+gsutil cors set cors.json gs://test-agroseed/
+history | grep gstuil
+
+
+***************************************************************************EMAIL credentials**************************************************************
+
+EMAIL:agrostacknoreply@gmail.com
+PASSWORD:Learn@2021
+noreplytestmail@2021
+
+
+**********************************************************NEW GMAIL**************************************************************************************
+EMAIL:noreplyagrostack@gmail.com
+PWD:Learn@2021
+sendgris pwwd :noreplytestmail@2021
+
+***************************************************************************marutZap**************************************************************
+//GCP   ACCOUNT   DEAILS
+agrostack.marut@gmail.com
+password: BynMrt@2021
+
+//Docker-Hub
+
+*marutzap
+*agrostack.test@gmail.com
+*Learn@2021
+
+ADMIN
+https://admin.growfacts.in/
+PSW:marutzap@admin
+
+https://growfacts.in/api/gateway/receive/GetFumigationData
+
+***************************************************************************AGRICORE**************************************************************
+GMAIL:
+*agricore.bynark@gmail.com
+*Learn@2021
+
+//Docker-Hub
+
+*agricore
+*agricore.bynark@gmail.com
+*Learn@2021
+
