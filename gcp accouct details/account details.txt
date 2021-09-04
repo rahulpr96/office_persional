@@ -139,4 +139,21 @@ GMAIL:
 *agricore
 *agricore.bynark@gmail.com
 *Learn@2021
+********************************************************************ADMIN PASSWORDS***********************************************************************************************
+
+1. gkseeds cluster - APP = test@agroseeds
+2.Test cluster - TEST = admin@test
+3.agrostack - Marut = marutzap@admin
+
+********************************************************************SQL PASSWORDS***********************************************************************************************
+
+1. gkseeds cluster - APP = test@agroseeds
+2.Test cluster - TEST = test@agroseeds
+3.agrostack - Marut = marutzap
+
+
+
+
+
+
 

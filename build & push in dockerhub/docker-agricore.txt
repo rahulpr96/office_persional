@@ -16,7 +16,7 @@ docker push agricore/admin-portal:latest
 docker push agricore/trace-portal:latest
 docker push agricore/prod-portal:latest
 docker push agricore/partner-portal:latest
-docker push agricore/qr-portal:latest
+docker push agricore/qr-web:latest
 
 docker push agricore/admin-web:%SHA%
 docker push agricore/trace-portal:%SHA%
@@ -51,6 +51,8 @@ docker push agricore/trace-srv:latest
 docker push agricore/qr-job:latest
 docker push agricore/file-srv:latest
 docker push agricore/gateway-srv:latest
+docker push agricore/farmer-srv:latest
+docker push agricore/email-srv:latest
 
 docker push agricore/auth-srv:%SHA%
 docker push agricore/user-srv:%SHA%

@@ -1,27 +1,43 @@
 
 BACKEND
 
-kubectl set image deployments/auth-srv auth-srv=agricore/auth-srv:version11
+kubectl set image deployments/auth-srv auth-srv=agricore/auth-srv:proudv32988
 
-kubectl set image deployments/user-srv user-srv=agricore/user-srv:version8
+kubectl set image deployments/user-srv user-srv=agricore/user-srv:proudv32  
 
-kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:8ce007f4f51c9f5fb592744c6f60ce5dc19f9dfdfdffff
-kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:v2
+kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:profdf
 
-kubectl set image deployments/qr-job qr-job=agricore/qr-job:nfjdfhjfskfdgskj
+kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:prodv345
 
-kubectl set image deployments/file-srv file-srv=agricore/file-srv:8ce007f4f51c9f5fb592744c6f60ce5dc19f9c82
+kubectl set image deployments/qr-job qr-job=agricore/qr-job:prodv7
 
-kubectl set image deployments/farmer-srv farmer-srv=agricore/farmer-srv:8e6ace30433e9f93232a5da8beca1851e69bdfc0121212
+kubectl set image deployments/file-srv file-srv=agricore/file-srv:pord890
+
+kubectl set image deployments/email-srv email-srv=agricore/email-srv:pord8906666
 
 
 FRONTEND
 
-kubectl set image deployments/admin-web admin-web=agricore/admin-web:ndsifhslmvoskdfvsudgfoidsmskdljglll
+kubectl set image deployments/admin-web admin-web=agricore/admin-web:prodv3
 
-kubectl set image deployments/partner-web partner-web=agricore/partner-web:456khfsdhjhfdlkdsfj5445646454897467561
+kubectl set image deployments/partner-web partner-web=agricore/partner-web:prodv4
 
-kubectl set image deployments/qr-web qr-web=agricore/qr-web:5487dsffdshkfdshfdhfkj345ds7dfgdshf
+kubectl set image deployments/qr-web qr-web=agricore/qr-web:prodv22
+
+kubectl set image deployments/user-web user-web=agricore/user-web:prodv5
+
+
+
+
+ALTER TABLE farms MODIFY COLUMN name varchar(255);
+
+ALTER TABLE farm_crops MODIFY COLUMN name varchar(255);
+
+ALTER TABLE farmers MODIFY COLUMN name varchar(255);
+
+ALTER TABLE users MODIFY COLUMN username varchar(100);
+
+ALTER TABLE users MODIFY COLUMN email varchar(100) unique key;
 
 
 

@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+
+
+SELECT qr_requests.schedule_date, 
+						sum(qr_requests.no_of_packages) as total_packages,
+						sum(qr_requests.no_of_master) as total_masters, entity_field_data.data 
+						FROM qr_requests    
+						JOIN qr_entity_data ON  qr_entity_data.request_id = qr_requests.request_id and qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL ? DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)  
+						join entity_data on entity_data.entity_data_id = qr_entity_data .entity_data_id
+						join entity_field_data on entity_field_data.entity_data_id =entity_data.entity_data_id
+						join entity_fields on entity_fields.field_id = entity_field_data.entity_field_id and entity_fields.name = ?
+						join entities on entities.entity_id = entity_data.entity_id and entities.name = ?
+						group by entity_field_data.data, qr_requests.schedule_date 
+						order by qr_requests.schedule_date`\\
+						
+						
+						SELECT  qr_requests.request_id, qr_requests.schedule_date, qr_requests.batch_number, qr_requests.company_id, qr_requests.child_workflow_id, package_qr.package_number, qr_requests.product_id
+	FROM qr_requests 
+	JOIN package_qr ON package_qr.request_id = qr_requests.request_id AND  package_qr.package_id = ?`
+	
+	GetPackageChartData
+	
+	
+SELECT qr_requests.no_of_packages, qr_requests.no_of_master, qr_requests.schedule_date, warehouses.name  FROM qr_requests   join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where warehouses.warehouse_id = '35a3bb59-4853-41d1-bdfa-209de21d1d28' AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL 30
+ DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY);
+ 
+ 
+ 
+ SELECT 
+	sum(qr_requests.no_of_packages) as total_packages,
+	sum(qr_requests.no_of_master) as total_masters, 
+	qr_requests.schedule_date, 
+	warehouses.name  
+	FROM qr_requests   
+	join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where warehouses.warehouse_id = '35a3bb59-4853-41d1-bdfa-209de21d1d28'
+	AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL 30 DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+	group by qr_requests.schedule_date
+	order by qr_requests.schedule_date
+	
+	
+	SELECT 
+	sum(qr_requests.no_of_packages) as total_packages,
+	sum(qr_requests.no_of_master) as total_masters, 
+	qr_requests.schedule_date, 
+	warehouses.name  
+	FROM qr_requests   
+	join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where warehouses.warehouse_id = '35a3bb59-4853-41d1-bdfa-209de21d1d28'
+	AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL 30
+	DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+	group by qr_requests.schedule_date, warehouses.name 
+	order by qr_requests.schedule_date)
+	
+	
+	
+	
+	COMMANADS:
+	
+	drop index username on users;
+	 show index from users;
+	 
+	 
+	

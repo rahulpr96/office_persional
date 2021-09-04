@@ -50,5 +50,13 @@ where qr_requests.schedule_date = '2021-07-03'
 group by entity_field_data.data
 
 
+GetPackageChartData
+	
+	
+	SELECT qr_requests.no_of_packages, qr_requests.no_of_master, qr_requests.schedule_date
+	FROM qr_requests 
+	where warehouse_id = ? AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL ? DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY) 
+
+
 
 
