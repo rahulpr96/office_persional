@@ -13,7 +13,7 @@
 CREATE:
 
 		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_test_agricore_03_2021.sql
-		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info test > dump_test_agricore_03_2021.sql
+		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info test > dump_test_test_03_2021.sql
 
 		MIGRATE :
 	
@@ -29,8 +29,30 @@ CREATE:
 		DUMP:
 		
 		kubectl exec mysql-6c4c4b944c-s4f5n  -- mysql -u root -ptest@agroseeds agricore < dump_test_agricore_03_2021.sql
-		kubectl exec mysql-56444748c6-cl5mt  -- mysql -u root -ptest@agroseeds vibha < dump_prod_vibha.sql
-		kubectl exec mysql-56444748c6-cl5mt  -- mysql -u root -ptest@agroseeds fpo1 < dump_prod_fpo1.sql
+		kubectl exec mysql-56444748c6-cl5mt  -- mysql -u root -ptest@agroseeds vibha < dump_test_.sql
+
 		
 		
 		
+		****************************************GKSEEDS***************************************************************
+		
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info "databasename" > dump_prod_vibha_03.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_prod_agricore_03.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info vibha > dump_prod_vibha_03.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info fpo1 > dump_prod_fpo1_03.sql
+		
+		
+		MIGRATE :
+	
+		cd agricore/k8s/migration/
+		vim db-migration-job.yaml
+		kubectl get pods
+		kubectl delete -f db-migration-job.yaml
+		kubectl apply -f db-migration-job.yaml
+		kubectl logs job/db-migration-job
+		vim ~/dump_prod_agricore.sql
+		
+		DUMP:
+		
+		 kubectl exec mysql-56444748c6-cl5mt  -- mysql -u root -ptest@agroseeds vibha < dump_prod_vibha_03.sql
+  380  kubectl exec mysql-56444748c6-cl5mt  -- mysql -u root -ptest@agroseeds fpo1 < dump_prod_fpo1_03.sql
