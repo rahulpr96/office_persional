@@ -12,8 +12,8 @@
 
 CREATE:
 
-		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_test_agricore_03_2021.sql
-		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info test > dump_test_test_03_2021.sql
+		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_test_agricore_05_2021.sql
+		kubectl exec mysql-6c4c4b944c-s4f5n -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info test > dump_test_test_05_ver02.sql
 
 		MIGRATE :
 	
@@ -37,9 +37,9 @@ CREATE:
 		****************************************GKSEEDS***************************************************************
 		
 		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info "databasename" > dump_prod_vibha_03.sql
-		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_prod_agricore_03.sql
-		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info vibha > dump_prod_vibha_03.sql
-		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info fpo1 > dump_prod_fpo1_03.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info agricore > dump_prod_agricore_05_ver02.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info vibha > dump_prod_vibha_05.sql
+		kubectl exec mysql-56444748c6-cl5mt -- mysqldump -u root -ptest@agroseeds --no-create-db --compact --no-create-info fpo1 > dump_prod_fpo1_05.sql
 		
 		
 		MIGRATE :

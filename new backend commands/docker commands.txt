@@ -1,0 +1,55 @@
+oapi-codegen -generate types -o internal/platform/organization/ports/openapi_types.gen.go -package ports api/openapi/organization.yml
+oapi-codegen -generate chi-server -o internal/platform/organization/ports/openapi_api.gen.go -package ports api/openapi/organization.yml
+
+
+
+
+
+
+
+
+
+
+
+oapi-codegen -generate types -o internal/platform/admin/ports/openapi_types.gen.go -package ports api/openapi/admin.yml
+oapi-codegen -generate chi-server -o internal/platform/admin/ports/openapi_api.gen.go -package ports api/openapi/admin.yml
+
+
+
+
+
+
+
+
+oapi-codegen -generate types -o internal/platform/production/ports/openapi_types.gen.go -package ports api/openapi/production.yml
+	oapi-codegen -generate chi-server -o internal/platform/production/ports/openapi_api.gen.go -package ports api/openapi/production.yml
+
+
+oapi-codegen -generate types -o internal/platform/packaging/ports/openapi_types.gen.go -package ports api/openapi/packaging.yml
+oapi-codegen -generate chi-server -o internal/platform/packaging/ports/openapi_api.gen.go -package ports api/openapi/packaging.yml
+
+
+
+
+
+oapi-codegen -generate types -o internal/platform/farmer/ports/openapi_types.gen.go -package ports api/openapi/farmer.yml
+oapi-codegen -generate chi-server -o internal/platform/farmer/ports/openapi_api.gen.go -package ports api/openapi/farmer.yml
+
+
+
+
+{
+    "email": "manjusampangi74@gmaiul.com",
+    "name": "manju",
+    "password": "manju",
+    "phoneNumber": "9000806305",
+    "status": "InActive",
+    "userName": "manju"
+}
+
+
+
+
+
+
+

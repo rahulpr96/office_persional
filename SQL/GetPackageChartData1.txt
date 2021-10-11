@@ -50,19 +50,119 @@ SELECT qr_requests.no_of_packages, qr_requests.no_of_master, qr_requests.schedul
 	qr_requests.schedule_date, 
 	warehouses.name  
 	FROM qr_requests   
-	join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where warehouses.warehouse_id = '35a3bb59-4853-41d1-bdfa-209de21d1d28'
+	join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where warehouses.warehouse_id = 'b74be4dd-e36c-46bc-a725-7127906121dc'
 	AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL 30
 	DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
 	group by qr_requests.schedule_date, warehouses.name 
-	order by qr_requests.schedule_date)
+	order by qr_requests.schedule_date
 	
 	
 	
+	SELECT 
+	sum(qr_requests.no_of_packages) as total_packages,
+	sum(qr_requests.no_of_master) as total_masters, 
+	qr_requests.schedule_date, 
+	warehouses.name  
+	FROM qr_requests   
+	join warehouses on warehouses.warehouse_id = qr_requests.warehouse_id where qr_requests.warehouse_id = warehouses.warehouse_id
+	AND qr_requests.schedule_date BETWEEN DATE_SUB( CURDATE() ,INTERVAL 30
+	DAY ) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+	group by qr_requests.schedule_date, warehouses.name 
+	order by qr_requests.schedule_date
 	
-	COMMANADS:
 	
-	drop index username on users;
-	 show index from users;
-	 
-	 
+
+farm_activity_dates
+farm_crop_calendar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	select (select count(farmers.farmer_id)) as farmers,
+	(select count(farms.farm_id)) as farms,
+	(select sum(farm_mapping.calculated_area)) as calculatedArea,
+	(select (farm_crops.crop_type_id)) as crops
+	from farmers  
+	join farms on farms.farmer_id = farmers.farmer_id
+	join farm_crops on farms.farm_id = farm_crops.farm_id
+	join farm_mapping on farm_mapping.farm_id = farms.farm_id
+	where district='medak' group by farm_crops.crop_type_id;
+
+
+
+select (select count(farmers.farmer_id)) as farmers,
+   (select count(farms.farm_id)) as farms,
+   (select count(farm_crops.crop_type_id)) as crops,
+   (select sum(farm_mapping.calculated_area)) as calculatedArea
+   from farmers
+	join farms on farms.farmer_id = farmers.farmer_id
+    join farm_crops on farms.farm_id = farm_crops.farm_id
+    join farm_mapping on farm_mapping.farm_id = farms.farm_id
+    where district='medak';
 	
+	
+
+select (select count(farmers.farmer_id)) as farmers,
+(select count(farms.farm_id)) as farms,
+(select sum(farm_mapping.calculated_area)) as calculatedArea
+from farmers  
+join farms on farms.farmer_id = farmers.farmer_id
+join farm_mapping on farm_mapping.farm_id = farms.farm_id
+where district='medak'
+
+
+
+select farmers.farmer_id, 
+no_of_acres as acers 
+from farmers  
+join farms on farms.farmer_id = farmers.farmer_id 
+where district='Warangal';
+
+select 
+sum(farms.farm_id) as farms, 
+sum(farm_mapping.calculated_area) as calculatedArea,
+sum(farmers.farmer_id) as Farmers
+from farmers  
+join farms on farms.farmer_id = farmers.farmer_id 
+join farm_mapping on farm_mapping.farm_id = farms.farm_id
+where district='medak' group by farmers.farmer_id, farms.farm_id, farm_mapping.calculated_area
+

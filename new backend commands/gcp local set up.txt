@@ -1,0 +1,66 @@
+version: '3'
+services:
+  core-platform:
+    build:
+      context: docker/app
+    volumes:
+      - d:/golang/new/backend:/backend
+    working_dir: /backend/internal/platform
+    ports:
+      - "127.0.0.1:$SERVER_PORT:$PORT"
+    env_file:
+      - .env
+    environment:
+      SERVER_TO_RUN: http
+    restart: unless-stopped
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    image: mysql:8
+    env_file:
+      - .env
+    volumes:
+      - d:/mysql:/var/lib/mysql
+      - d:/golang/new/backend/db/local:/opt
+    ports:
+      - "127.0.0.1:3306:3306"
+    restart: unless-stopped
+  redis:
+    image: "redis:alpine"
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:6379:6379"
+    restart: unless-stopped
+
+
+
+
+
+
+commands:
+
+1.docker-compose up core-platform
+2.docker-compose up mysql redis
+
+
+
+
+setUP
+
+docker-compose up mysql
+migrate -source file://db/migration/master -database "mysql://root:test@agroseeds@tcp(127.0.0.1:3306)/agricore" up 1
+docker ps
+docker exec -it <mysql_container_id> /bin/bash
+
+login to mysql
+create database test;
+use agricore
+source /opt/agricore.sql
+exit 
+migrate -source file://db/migration/partner -database "mysql://root:test@agroseeds@tcp(127.0.0.1:3306)/test" up 1
+
+docker-compose down mysql
+
+docker-compose up

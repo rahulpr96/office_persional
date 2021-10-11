@@ -3,6 +3,7 @@ KUBERNETS COMMANDS
 
 1. kubectl delete pods -l component=backend     #To delete all backend pods at once in gcp
 
+
 2.kubectl config current-context                # this command to check which cluster you are in ?
 
 3.kubectl get services                          # List all services in the namespace

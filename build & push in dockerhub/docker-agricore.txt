@@ -15,8 +15,10 @@ docker build -t agricore/user-web:latest -t agricore/user-web:%SHA% -f ./user-we
 docker push agricore/admin-portal:latest
 docker push agricore/trace-portal:latest
 docker push agricore/prod-portal:latest
-docker push agricore/partner-portal:latest
+docker push agricore/partner-web:latest
 docker push agricore/qr-web:latest
+docker push agricore/user-web:
+
 
 docker push agricore/admin-web:%SHA%
 docker push agricore/trace-portal:%SHA%
@@ -26,6 +28,10 @@ docker push agricore/qr-web:%SHA%
 docker push agricore/user-web:%SHA%
 
 BACKEND
+
+
+
+
 
 protoc -I. --go_out=. --micro_out=. proto/platform/platform.proto
 set GOOS=linux 
@@ -43,6 +49,7 @@ docker build -t agricore/qr-job:latest -t  agricore/qr-job:%SHA% -f ./qr-job/Doc
 docker build -t agricore/file-srv:latest -t agricore/file-srv:%SHA% -f ./file-srv/Dockerfile.dev ./file-srv
 docker build -t agricore/farmer-srv:latest -t agricore/farmer-srv:%SHA% -f ./farmer-srv/Dockerfile.dev ./farmer-srv
 docker build -t agricore/email-srv:latest -t agricore/email-srv:%SHA% -f ./email-srv/Dockerfile.dev ./email-srv
+docker build -t agricore/core-platform:latest -t  agricore/core-platform:%SHA% -f ./platform/Dockerfile.dev ./platform
 
 docker push agricore/auth-srv:latest
 docker push agricore/user-srv:latest
@@ -53,6 +60,7 @@ docker push agricore/file-srv:latest
 docker push agricore/gateway-srv:latest
 docker push agricore/farmer-srv:latest
 docker push agricore/email-srv:latest
+docker push agricore/core-platform:latest
 
 docker push agricore/auth-srv:%SHA%
 docker push agricore/user-srv:%SHA%
@@ -62,6 +70,7 @@ docker push agricore/qr-job:%SHA%
 docker push agricore/file-srv:%SHA%
 docker push agricore/farmer-srv:%SHA%
 docker push agricore/email-srv:%SHA%
+docker push agricore/core-platform:%SHA%
 //GCP
 //GKSEEDS
 gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --project gkseeds
@@ -69,3 +78,5 @@ gcloud container clusters get-credentials gkseeds --zone asia-southeast1-a --pro
 gcloud container clusters get-credentials test --zone asia-southeast1-a --project ultimate-figure-312206
 //AGROSTACK
 gcloud container clusters get-credentials marutzap --zone asia-southeast1-a --project agrostack-310016
+
+

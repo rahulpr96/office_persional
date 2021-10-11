@@ -4,24 +4,24 @@ BACKEND
 kubectl set image deployments/auth-srv auth-srv=agricore/auth-srv:productionv6
 
 kubectl set image deployments/user-srv user-srv=agricore/user-srv:productionv4 
+kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:PRODvv1
 
-kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:productionv11
 
+kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:Pv2
 
-kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:productionv2
-
-kubectl set image deployments/qr-job qr-job=agricore/qr-job:productionv3
+kubectl set image deployments/qr-job qr-job=agricore/qr-job:Pv1
 
 kubectl set image deployments/file-srv file-srv=agricore/file-srv:productionv7
 
 kubectl set image deployments/email-srv email-srv=agricore/email-srv:productionv5
 
+kubectl set image deployments/core-platform core-platform=agricore/core-platform:v1w2
 
 FRONTEND
 
-kubectl set image deployments/admin-web admin-web=agricore/admin-web:production1
+kubectl set image deployments/admin-web admin-web=agricore/admin-web:PROdv23
 
-kubectl set image deployments/partner-web partner-web=agricore/partner-web: production001
+kubectl set image deployments/partner-web partner-web=agricore/partner-web:PRodv12
 
 kubectl set image deployments/qr-web qr-web=agricore/qr-web:production1111
 
