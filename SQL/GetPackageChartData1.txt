@@ -111,33 +111,45 @@ farm_crop_calendar
 
 
 
+	select (farmers.farmer_id) as farmers, (select count(farms.farm_id)) as farms
+	from farmers
+	inner join farms on farms.farmer_id = farmers.farmer_id group by farms.farmer_id
+	where district='medak';
+	
+	select count(farmers.farmer_id) as farmers
+	from farmers
 
 
-
+	
+	
+	select distinct farmers.farmer_id, project.project_id
+    from farmers
+	join farms on farms.farmer_id = farmers.farmer_id
+    join farm_crops on farms.farm_id = farm_crops.farm_id
+	join project on farm_crops.crop_type_id = project.crop_type_id
+    where farmers.district='medak' and farm_crops.crop_type_id='632bcbfa-1da6-4228-a060-efcb5c6e89bf' group by project.project_id
 
 
 
 	select (select count(farmers.farmer_id)) as farmers,
 	(select count(farms.farm_id)) as farms,
-	(select sum(farm_mapping.calculated_area)) as calculatedArea,
-	(select (farm_crops.crop_type_id)) as crops
+	(select sum(farm_mapping.calculated_area)) as calculatedArea
 	from farmers  
 	join farms on farms.farmer_id = farmers.farmer_id
-	join farm_crops on farms.farm_id = farm_crops.farm_id
 	join farm_mapping on farm_mapping.farm_id = farms.farm_id
-	where district='medak' group by farm_crops.crop_type_id;
+	where district='medak';
 
 
 
-select (select count(farmers.farmer_id)) as farmers,
-   (select count(farms.farm_id)) as farms,
-   (select count(farm_crops.crop_type_id)) as crops,
-   (select sum(farm_mapping.calculated_area)) as calculatedArea
-   from farmers
-	join farms on farms.farmer_id = farmers.farmer_id
-    join farm_crops on farms.farm_id = farm_crops.farm_id
-    join farm_mapping on farm_mapping.farm_id = farms.farm_id
-    where district='medak';
+	select (select count(farmers.farmer_id)) as farmers,
+	   (select count(farms.farm_id)) as farms,
+	   (select count(farm_crops.crop_type_id)) as crops,
+	   (select sum(farm_mapping.calculated_area)) as calculatedArea
+	   from farmers
+		join farms on farms.farmer_id = farmers.farmer_id
+		join farm_crops on farms.farm_id = farm_crops.farm_id
+		join farm_mapping on farm_mapping.farm_id = farms.farm_id
+		where farmers.district='medak';
 	
 	
 

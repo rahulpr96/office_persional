@@ -63,4 +63,4 @@ migrate -source file://db/migration/partner -database "mysql://root:test@agrosee
 
 docker-compose down mysql
 
-docker-compose up
+docker-compose up		

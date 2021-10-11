@@ -4,7 +4,7 @@ BACKEND
 kubectl set image deployments/auth-srv auth-srv=agricore/auth-srv:productionv6
 
 kubectl set image deployments/user-srv user-srv=agricore/user-srv:productionv4 
-kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:PRODvv1
+kubectl set image deployments/platform-srv platform-srv=agricore/platform-srv:Pv3
 
 
 kubectl set image deployments/trace-srv trace-srv=agricore/trace-srv:Pv2
